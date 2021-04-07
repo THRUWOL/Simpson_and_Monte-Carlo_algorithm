@@ -1,0 +1,50 @@
+﻿<Window x:Class="Simpson.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:local="clr-namespace:Simpson"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        mc:Ignorable="d"
+        Title="Ярош" Height="600" Width="900" Foreground="Black" Background="White" SizeToContent="WidthAndHeight">
+    <Window.DataContext>
+        <local:MainViewModel></local:MainViewModel>
+    </Window.DataContext>
+    <Grid>
+        <Grid Margin="372,10,9.6,48.4" Width="512" Height="512" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <oxy:PlotView Model="{Binding MyModel}" Margin="-10,0,10,0" Background="White" Foreground="Black"/>
+        </Grid>
+        <Button Content="Рассчитать" HorizontalAlignment="Left" Margin="123,376,0,0" VerticalAlignment="Top" Width="117" Click="Button_Click" Height="33" FontSize="14" RenderTransformOrigin="0.547,0.527" BorderBrush="{x:Null}" Background="#FF9B9BFF" Foreground="White">
+            <Button.Effect>
+                <DropShadowEffect Color="#FF052965" BlurRadius="2" Opacity="0.5" ShadowDepth="3"/>
+            </Button.Effect>
+        </Button>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="30" Margin="56,79,0,0" TextWrapping="Wrap" Text="ln(x+sqrt(x^2-0.25))/(2*x^2)" VerticalAlignment="Top" Width="291" FontSize="16" BorderBrush="Black" SelectionBrush="#FF9B9BFF" Foreground="#FF9B9BFF"/>
+        <TextBox x:Name="textBoxB" HorizontalAlignment="Left"  Margin="288,124,0,0" TextWrapping="Wrap" Text="1.7" VerticalAlignment="Top" Width="59" Foreground="#FF9B9BFF" BorderBrush="Black" SelectionBrush="#FF9B9BFF" Height="17"/>
+        <TextBox x:Name="textBoxA" HorizontalAlignment="Left"  Margin="196,124,0,0" TextWrapping="Wrap" Text="0.5" VerticalAlignment="Top" Width="59" Foreground="#FF9B9BFF" BorderBrush="Black" SelectionBrush="#FF9B9BFF" Height="17"/>
+        <TextBox x:Name="textBoxN" HorizontalAlignment="Left"  Margin="288,192,0,0" TextWrapping="Wrap" Text="128" VerticalAlignment="Top" Width="59" Foreground="#FF9B9BFF" BorderBrush="Black" SelectionBrush="#FF9B9BFF" Height="17"/>
+        <TextBox x:Name="textBoxAccuracy" HorizontalAlignment="Left"  Margin="196,232,0,0"  TextWrapping="Wrap" Text="0.0001" VerticalAlignment="Top" Width="59" IsEnabled="False" Foreground="#FF9B9BFF" BorderBrush="Black" SelectionBrush="#FF9B9BFF" Height="17"/>
+        <TextBox x:Name="textBoxR" HorizontalAlignment="Left"  Margin="196,298,0,0" TextWrapping="Wrap" Text="20000" VerticalAlignment="Top" Width="59" Foreground="#FF9B9BFF" BorderBrush="Black" SelectionBrush="#FF9B9BFF" Height="17"/>
+        <TextBox x:Name="textBoxI" HorizontalAlignment="Left"  Margin="196,331,0,0" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" Width="59" Foreground="#FF9B9BFF" BorderBrush="Black" SelectionBrush="#FF9B9BFF" Height="17"/>
+        <CheckBox x:Name="ControlAccuracy" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="28,228,0,0" Checked="ControlAccuracy_Checked" Unchecked="ControlAccuracy_Unchecked" Width="162" Content="Контроль точности:" FontSize="14"/>
+        <Rectangle HorizontalAlignment="Left" Height="132" Margin="19,422,0,0" VerticalAlignment="Top" Width="328" Stroke="#FF9B9BFF" Fill="#FFFAFAFA"/>
+        <Label Content="b:" Height="29" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="262,118,0,0" FontSize="14" Foreground="Black" Width="20"/>
+        <Label Content="a:" Height="29" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="170,118,0,0" FontSize="14" Foreground="Black" Width="20"/>
+        <Label Content="Настройки" HorizontalAlignment="Left" Margin="123,16,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="Black"/>
+        <Label Content="Количество бросков:" HorizontalAlignment="Left" Margin="21,291,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Общие" Margin="10,44,0,0" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF9B9BFF"/>
+        <Label Content="F(x):" HorizontalAlignment="Left" Margin="19,79,0,0" VerticalAlignment="Top" FontSize="14" Width="32"/>
+        <Label Content="Метод Симпсона" Margin="10,152,0,0" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF9B9BFF"/>
+        <Label Content="Метод Монте-Карло" Margin="10,251,0,0" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF9B9BFF"/>
+        <Label Content="Количесто испытаний:" HorizontalAlignment="Left" Margin="21,325,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Координаты отрезка:" HorizontalAlignment="Left" Margin="21,118,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Максимальное количество разбиений:" HorizontalAlignment="Left" Margin="19,186,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label x:Name="labelSimpson" HorizontalAlignment="Left" Height="25" Margin="28,433,0,0" VerticalAlignment="Top" Width="306" Content="Симпсон:" Foreground="#FF25257A" Background="{x:Null}"/>
+        <Label x:Name="labelRunge" HorizontalAlignment="Left" Height="25" Margin="28,463,0,0" VerticalAlignment="Top" Width="306" Content="Рунге:" Foreground="#FF25257A" Background="{x:Null}"/>
+        <Label x:Name="labelMonte" HorizontalAlignment="Left" Height="25" Margin="28,493,0,0" VerticalAlignment="Top" Width="306" Content="Монте-Карло:" Foreground="#FF25257A" Background="{x:Null}"/>
+        <Label x:Name="labelMonteAccuracy" HorizontalAlignment="Left" Height="25" Margin="28,523,0,0" VerticalAlignment="Top" Width="306" Content="Стандартный разброс:" Foreground="#FF25257A" Background="{x:Null}"/>
+        <Label Content="программа работает в однопоточном режиме, выбирайте значения с умом " HorizontalAlignment="Left" Margin="415,522,0,0" VerticalAlignment="Top" Width="430" Foreground="#FFF46969"/>
+        <Label Content="🧠" HorizontalAlignment="Left" Margin="397,522,0,0" VerticalAlignment="Top" Foreground="#FFFD15A3"/>
+        <Label Content="🧠" HorizontalAlignment="Left" Margin="835,522,0,0" VerticalAlignment="Top" Foreground="#FFFD15A3"/>
+    </Grid>
+</Window>
